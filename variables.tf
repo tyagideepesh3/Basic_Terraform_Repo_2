@@ -7,7 +7,7 @@ variable "aws_credentials" {
     aws_region_section = string
   })
 
-  value = {
+  default = {
     aws_access_key = "AKIAYBMN5MBDSWB3GB2C"
     aws_secret_key = "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"
     aws_region_section = "ap-south-1"
