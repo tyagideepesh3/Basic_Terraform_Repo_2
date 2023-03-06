@@ -1,7 +1,17 @@
-provider "aws" {
-  access_key = var.aws_credentials.aws_access_key
-  secret_key = var.aws_credentials.aws_secret_key
-  region = var.aws_credentials.aws_region_section
+data "aws_ami" "app_ami" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["bitnami-tomcat-*-x86_64-hvm-ebs-nami"]
+  }
+
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+
+  owners = ["979382823631"] # Bitnami
 }
 
 module "s3-bucket-storage" {
