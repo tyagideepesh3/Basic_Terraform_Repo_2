@@ -32,3 +32,29 @@ resource "aws_s3_bucket_versioning" "blog-bucket-versioning" {
     status = "Enabled"
   }
 }
+module "first-dynamodb-table-tf-module" {
+  source  = "terraform-aws-modules/dynamodb-table/aws"
+  version = "3.1.2"
+
+  name     = "My_First_Table"
+  hash_key = "UserId"
+
+  attributes = [
+    {
+        name = "UserId",
+        type = "S"
+    },
+    {
+        name = "UserName",
+        type = "S"
+    },
+    {
+        name = "UserContactNumber"
+        type = "S"
+    }
+  ]
+  tags = {
+    Terraform = "true"
+    Environment = "staging"
+  }
+}
