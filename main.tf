@@ -69,7 +69,7 @@ resource "aws_dynamodb_table_item" "item3" {
   depends_on = [
     aws_dynamodb_table.res-dynamodb-table-tf-rec
   ]
-  table_name = aws_dynamodb_table.res-dynamodb-table-tf-rec
+  table_name = aws_dynamodb_table.res-dynamodb-table-tf-rec.name
   hash_key   = aws_dynamodb_table.res-dynamodb-table-tf-rec.hash_key
     item = <<ITEM
     {
