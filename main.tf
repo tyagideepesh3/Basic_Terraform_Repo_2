@@ -24,7 +24,7 @@ resource "aws_s3_bucket" "blog-bucket" {
 }
 resource "aws_s3_bucket_acl" "blog-bucket-acl" {
   bucket = aws_s3_bucket.blog-bucket.id
-  acl = "public"
+  acl = "public-read-write"
 }
 resource "aws_s3_bucket_versioning" "blog-bucket-versioning" {
   bucket = aws_s3_bucket.blog-bucket.id
