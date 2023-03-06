@@ -45,13 +45,6 @@ module "first-dynamodb-table-tf-module" {
         type = "S"
     }
   ]
-
-    local_secondary_indexes = [
-        {
-            name = "test"
-        }
-    ]
-
   tags = {
     Terraform = "true"
     Environment = "staging"
