@@ -74,10 +74,42 @@ resource "aws_dynamodb_table_item" "item3" {
     item = <<ITEM
     {
       "UserId": {"S": "001"},
-      "one": {"N": "11111"},
-      "two": {"N": "22222"},
-      "three": {"N": "33333"},
-      "four": {"N": "44444"}
+      "UserName": {"S": "Devu"},
+      "UserAge": {"N": "12"},
+      "UserAddress": {"S": "90/2-3 , Nav Prayag UTTRAKHAND"},
+      "ContactNumber": {"N": "2018023991"}
+    }
+    ITEM
+}
+resource "aws_dynamodb_table_item" "item2" {
+  depends_on = [
+    aws_dynamodb_table.res-dynamodb-table-tf-rec
+  ]
+  table_name = aws_dynamodb_table.res-dynamodb-table-tf-rec.name
+  hash_key   = aws_dynamodb_table.res-dynamodb-table-tf-rec.hash_key
+    item = <<ITEM
+    {
+      "UserId": {"S": "002"},
+      "UserName": {"S": "Ashu"},
+      "UserAge": {"N": "12"},
+      "UserAddress": {"S": "90/1-3 , Nav Prayag UTTRAKHAND"},
+      "ContactNumber": {"N": "2018023992"}
+    }
+    ITEM
+}
+resource "aws_dynamodb_table_item" "item1" {
+  depends_on = [
+    aws_dynamodb_table.res-dynamodb-table-tf-rec
+  ]
+  table_name = aws_dynamodb_table.res-dynamodb-table-tf-rec.name
+  hash_key   = aws_dynamodb_table.res-dynamodb-table-tf-rec.hash_key
+    item = <<ITEM
+    {
+      "UserId": {"S": "003"},
+      "UserName": {"S": "Deepu"},
+      "UserAge": {"N": "13"},
+      "UserAddress": {"S": "90/3-3 , Nav Prayag UTTRAKHAND"},
+      "ContactNumber": {"N": "2018023993"}
     }
     ITEM
 }
