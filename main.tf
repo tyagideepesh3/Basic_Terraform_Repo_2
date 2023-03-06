@@ -38,21 +38,20 @@ module "first-dynamodb-table-tf-module" {
 
   name     = "My_First_Table"
   hash_key = "UserId"
-
+  
   attributes = [
     {
         name = "UserId",
         type = "S"
-    },
-    {
-        name = "UserName",
-        type = "S"
-    },
-    {
-        name = "UserContactNumber"
-        type = "S"
     }
   ]
+
+    local_secondary_indexes = [
+        {
+            name = "test"
+        }
+    ]
+
   tags = {
     Terraform = "true"
     Environment = "staging"
