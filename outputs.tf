@@ -1,9 +1,9 @@
 output "aws_bucket_id" {
-  value = module.s3-bucket-storage.s3_bucket_id
+  value = aws_s3_bucket.blog-bucket.id
 }
 output "aws_bucket_arn" {
-  value = module.s3-bucket-storage.s3_bucket_arn
+    value = aws_s3_bucket.blog-bucket.arn
 }
 output "aws_bucket_region" {
-  value = module.s3-bucket-storage.s3_bucket_region
+  value = aws_s3_bucket.blog-bucket.region
 }
