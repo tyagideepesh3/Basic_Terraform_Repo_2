@@ -17,7 +17,6 @@ data "aws_ami" "app_ami" {
 
 resource "aws_s3_bucket" "blog-bucket" {
   bucket = "terraform-bucket-06032023-2"
-  
   tags = {
     Name        = "Blog Bucket"
     Environment = "Dev"
