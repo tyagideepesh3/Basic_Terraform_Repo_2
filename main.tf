@@ -14,13 +14,21 @@ data "aws_ami" "app_ami" {
   owners = ["979382823631"] # Bitnami
 }
 
-module "s3-bucket-storage" {
-  source  = "terraform-aws-modules/s3-bucket/aws"
-  version = "3.7.0"
-
-  bucket = "my-s3-bucket-terraform-06032023"
-  acl    = "public"
-  versioning = {
-    enabled = true
+resource "aws_s3_bucket" "blog-bucket" {
+  bucket = "terraform-bucket-06032023"
+  
+  tags = {
+    Name        = "Blog Bucket"
+    Environment = "Dev"
+  }
+}
+resource "aws_s3_bucket_acl" "blog-bucket-acl" {
+  bucket = aws_s3_bucket.blog-bucket.id
+  acl = "private"
+}
+resource "aws_s3_bucket_versioning" "blog-bucket-versioning" {
+  bucket = aws_s3_bucket.blog-bucket.id
+  versioning_configuration {
+    status = "Enabled"
   }
 }
